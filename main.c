@@ -132,7 +132,7 @@ int main(void)
                 state = BUMPEDOUTSIDE;
             else
             if (bump_data1 == 1)
-                state = SETUP_TURNLEFT;
+                state = SETUP_BACKWARDS;
             else
 
             if (bump_data2 == 1)
@@ -190,8 +190,8 @@ int main(void)
             left_encoder_zero_pos = get_left_motor_count();
             right_encoder_zero_pos = get_right_motor_count();
 
-            set_left_motor_direction(true);
-            set_right_motor_direction(false);
+            set_left_motor_direction(false);
+            set_right_motor_direction(true);
 
             // Start the motors here so we only have to start them once
             set_left_motor_pwm(.1);
@@ -264,8 +264,8 @@ int main(void)
                  left_encoder_zero_pos = get_left_motor_count();
                  right_encoder_zero_pos = get_right_motor_count();
 
-                 set_left_motor_direction(true);
-                 set_right_motor_direction(true);
+                 set_left_motor_direction(false);
+                 set_right_motor_direction(false);
 
                  // Start the motors here so we only have to start them once
                  set_left_motor_pwm(.1);
@@ -293,7 +293,7 @@ int main(void)
             }
 
             if (left_done && right_done) {
-                state = SETUP_TURN1;
+                state = SETUP_TURNLEFT;
             }
             break;
         } // end of case
