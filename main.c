@@ -17,7 +17,7 @@
 #include "Library/Button.h"
 
 #define TURN_TARGET_TICKS 100
-#define TURN_TARGET_TICKS90 150
+#define TURN_TARGET_TICKS90 175
 #define DRIVE_TARGET_TICKS 500
 
 
@@ -132,7 +132,7 @@ int main(void)
         case DRIVEFORWARD:
             set_left_motor_direction(true);
             set_right_motor_direction(true);
-            set_left_motor_pwm(.1);
+            set_left_motor_pwm(.097);
             set_right_motor_pwm(.1);
 
             if (bump_data0 == 1)
@@ -166,8 +166,8 @@ int main(void)
             right_done = false;
 
             // Start the motors here so we only have to start them once
-            set_left_motor_pwm(.097);
-            set_right_motor_pwm(.1);
+            set_left_motor_pwm(1.097);
+            set_right_motor_pwm(1.1);
 
             state = TURN1;
         break;
