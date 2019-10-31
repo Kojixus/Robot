@@ -57,6 +57,8 @@ typedef enum
     BUMPEDMIDDLE,
     SETUP_BACKWARDS,
     BACKWARDS,
+    SETUP_BACKWARDS2,
+    BACKWARDS2,
     ALL_DONE
 } my_state_t;
 
@@ -136,7 +138,7 @@ int main(void)
             else
 
             if (bump_data2 == 1)
-                state = SETUP_BACKWARDS;
+                state = SETUP_BACKWARDS2;
             else
             if (bump_data3 == 1)
                 state = SETUP_BUMPEDMIDDLE;
@@ -296,7 +298,46 @@ int main(void)
                 state = SETUP_TURNLEFT;
             }
             break;
-        } // end of case
+
+        case SETUP_BACKWARDS2:
+
+                        left_encoder_zero_pos = get_left_motor_count();
+                        right_encoder_zero_pos = get_right_motor_count();
+
+                        set_left_motor_direction(false);
+                        set_right_motor_direction(false);
+
+                        // Start the motors here so we only have to start them once
+                        set_left_motor_pwm(.1);
+                        set_right_motor_pwm(.1);
+
+                        left_done = false;
+                        right_done = false;
+
+                        state = BACKWARDS2;
+               break;
+
+        case BACKWARDS2:
+
+                   left_done = (left_encoder_zero_pos - get_left_motor_count()) > DRIVE_TARGET_TICKS;
+                   right_done = (right_encoder_zero_pos - get_right_motor_count()) > DRIVE_TARGET_TICKS;
+
+                   if (left_done)
+                   {
+                       set_left_motor_pwm(0);
+                   }
+
+                   if (right_done)
+                   {
+                       set_right_motor_pwm(0);
+                   }
+
+                   if (left_done && right_done) {
+                       state = SETUP_TURN1;
+                   }
+                   break;
+
+                } // end of case
 
         Clock_Delay1ms(10);
     }
