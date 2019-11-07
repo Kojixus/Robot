@@ -35,6 +35,7 @@ int tick=0;
 
 int mytime[20];
 int i=0;
+int mouse;
 
 typedef enum
 {
@@ -141,11 +142,17 @@ int main(void)
             if (bump_data1 == 1)
                 state = SETUP_BACKWARDS;
             else
-            if (bump_data2 == 1)
-                state = SETUP_BACKWARDS3;
-            else
-            if (bump_data3 == 1)
-                state = SETUP_BACKWARDS3;
+            if (bump_data2 || bump_data3 == 1)
+            { mouse = rand() %3 + 1;
+                if(mouse == 1)
+                    state = SETUP_BACKWARDS;
+                else
+                if(mouse == 2)
+                    state = SETUP_BACKWARDS2;
+                else
+                if(mouse == 3)
+                    state = SETUP_BACKWARDS3;
+            }
             else
             if (bump_data4 == 1)
                 state = SETUP_BACKWARDS2;
