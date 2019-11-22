@@ -16,9 +16,9 @@
 #include "Library/Encoder.h"
 #include "Library/Button.h"
 
-#define TURN_TARGET_TICKS 100
+#define TURN_TARGET_TICKS 180
 #define TURN_TARGET_TICKS90 175
-#define DRIVE_TARGET_TICKS 500
+#define DRIVE_TARGET_TICKS 1250
 
 
 void Initialize_System();
@@ -119,7 +119,7 @@ int main(void)
             }
         break;
 
-
+0
         case SETUP_DRIVEFORWARD:
             left_encoder_zero_pos = get_left_motor_count();
             right_encoder_zero_pos = get_right_motor_count();
@@ -133,8 +133,8 @@ int main(void)
         case DRIVEFORWARD:
             set_left_motor_direction(true);
             set_right_motor_direction(true);
-            set_left_motor_pwm(.097);
-            set_right_motor_pwm(.1);
+            set_left_motor_pwm(0.1);
+            set_right_motor_pwm(0.1);
 
             if (bump_data0 == 1)
                 state = BUMPEDOUTSIDE;
@@ -173,8 +173,8 @@ int main(void)
             right_done = false;
 
             // Start the motors here so we only have to start them once
-            set_left_motor_pwm(1.097);
-            set_right_motor_pwm(1.1);
+            set_left_motor_pwm(0.1);
+            set_right_motor_pwm(0.1);
 
             state = TURN1;
         break;
@@ -210,8 +210,8 @@ int main(void)
             right_done = false;
 
             // Start the motors here so we only have to start them once
-            set_left_motor_pwm(.097);
-            set_right_motor_pwm(.1);
+            set_left_motor_pwm(0.1);
+            set_right_motor_pwm(0.1);
 
             state = TURN90;
         break;
@@ -244,8 +244,8 @@ int main(void)
             set_right_motor_direction(true);
 
             // Start the motors here so we only have to start them once
-            set_left_motor_pwm(.097);
-            set_right_motor_pwm(.1);
+            set_left_motor_pwm(0.1);
+            set_right_motor_pwm(0.1);
 
             left_done = false;
             right_done = false;
@@ -318,8 +318,8 @@ int main(void)
                  set_right_motor_direction(false);
 
                  // Start the motors here so we only have to start them once
-                 set_left_motor_pwm(.097);
-                 set_right_motor_pwm(.1);
+                 set_left_motor_pwm(0.1);
+                 set_right_motor_pwm(0.1);
 
                  left_done = false;
                  right_done = false;
@@ -356,8 +356,8 @@ int main(void)
                         set_right_motor_direction(false);
 
                         // Start the motors here so we only have to start them once
-                        set_left_motor_pwm(.097);
-                        set_right_motor_pwm(.1);
+                        set_left_motor_pwm(0.1);
+                        set_right_motor_pwm(0.1);
 
                         left_done = false;
                         right_done = false;
@@ -394,8 +394,8 @@ int main(void)
                         set_right_motor_direction(false);
 
                         // Start the motors here so we only have to start them once
-                        set_left_motor_pwm(.097);
-                        set_right_motor_pwm(.1);
+                        set_left_motor_pwm(0.1);
+                        set_right_motor_pwm(0.1);
 
                         left_done = false;
                         right_done = false;
@@ -484,8 +484,5 @@ void Initialize_System()
 void SysTick_Handler(void)
 {
     tick++;
-    // if ((tick%1000)==0) MAP_GPIO_toggleOutputOnPin(GPIO_PORT_P1, GPIO_PIN0);        // Toggle RED LED each time through loop
+    // if ((tick%0.10)==0) MAP_GPIO_toggleOutputOnPin(GPIO_PORT_P1, GPIO_PIN0);        // Toggle RED LED each time through loop
 }
-
-
-

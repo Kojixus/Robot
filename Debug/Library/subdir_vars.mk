@@ -10,6 +10,8 @@ C_SRCS += \
 ../Library/Button.c \
 ../Library/Clock.c \
 ../Library/Encoder.c \
+../Library/HAL_I2C.c \
+../Library/HAL_OPT3001.c \
 ../Library/Motor.c \
 ../Library/Reflectance.c 
 
@@ -18,6 +20,8 @@ C_DEPS += \
 ./Library/Button.d \
 ./Library/Clock.d \
 ./Library/Encoder.d \
+./Library/HAL_I2C.d \
+./Library/HAL_OPT3001.d \
 ./Library/Motor.d \
 ./Library/Reflectance.d 
 
@@ -26,6 +30,8 @@ OBJS += \
 ./Library/Button.obj \
 ./Library/Clock.obj \
 ./Library/Encoder.obj \
+./Library/HAL_I2C.obj \
+./Library/HAL_OPT3001.obj \
 ./Library/Motor.obj \
 ./Library/Reflectance.obj 
 
@@ -34,6 +40,8 @@ OBJS__QUOTED += \
 "Library\Button.obj" \
 "Library\Clock.obj" \
 "Library\Encoder.obj" \
+"Library\HAL_I2C.obj" \
+"Library\HAL_OPT3001.obj" \
 "Library\Motor.obj" \
 "Library\Reflectance.obj" 
 
@@ -42,6 +50,8 @@ C_DEPS__QUOTED += \
 "Library\Button.d" \
 "Library\Clock.d" \
 "Library\Encoder.d" \
+"Library\HAL_I2C.d" \
+"Library\HAL_OPT3001.d" \
 "Library\Motor.d" \
 "Library\Reflectance.d" 
 
@@ -50,6 +60,8 @@ C_SRCS__QUOTED += \
 "../Library/Button.c" \
 "../Library/Clock.c" \
 "../Library/Encoder.c" \
+"../Library/HAL_I2C.c" \
+"../Library/HAL_OPT3001.c" \
 "../Library/Motor.c" \
 "../Library/Reflectance.c" 
 

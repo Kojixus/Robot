@@ -16,6 +16,8 @@ ORDERED_OBJS += \
 "./Library/Button.obj" \
 "./Library/Clock.obj" \
 "./Library/Encoder.obj" \
+"./Library/HAL_I2C.obj" \
+"./Library/HAL_OPT3001.obj" \
 "./Library/Motor.obj" \
 "./Library/Reflectance.obj" \
 "./ccs/startup_msp432p401r_ccs.obj" \
@@ -138,42 +140,42 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-Lab7.out \
+Lab9.out \
 
 EXE_OUTPUTS__QUOTED += \
-"Lab7.out" \
+"Lab9.out" \
 
 BIN_OUTPUTS += \
-Lab7.hex \
+Lab9.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"Lab7.hex" \
+"Lab9.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "Lab7.out"
+	@$(MAKE) --no-print-directory -Onone "Lab9.out"
 
 # Tool invocations
-Lab7.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+Lab9.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"Lab7.map" --stack_size=512 -i"C:/ti/simplelink_msp432p4_sdk_2_30_00_14/source" -i"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.3.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Lab7_linkInfo.xml" --rom_model -o "Lab7.out" $(ORDERED_OBJS)
+	"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=none --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"Lab9.map" --stack_size=512 -i"C:/ti/simplelink_msp432p4_sdk_2_30_00_14/source" -i"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.3.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Lab9_linkInfo.xml" --rom_model -o "Lab9.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-Lab7.hex: $(EXE_OUTPUTS)
+Lab9.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.3.LTS/bin/armhex"  -o "Lab7.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccs920/ccs/tools/compiler/ti-cgt-arm_18.12.3.LTS/bin/armhex"  -o "Lab9.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "system_msp432p401r.obj" "Library\Bump.obj" "Library\Button.obj" "Library\Clock.obj" "Library\Encoder.obj" "Library\Motor.obj" "Library\Reflectance.obj" "ccs\startup_msp432p401r_ccs.obj" 
-	-$(RM) "main.d" "system_msp432p401r.d" "Library\Bump.d" "Library\Button.d" "Library\Clock.d" "Library\Encoder.d" "Library\Motor.d" "Library\Reflectance.d" "ccs\startup_msp432p401r_ccs.d" 
+	-$(RM) "main.obj" "system_msp432p401r.obj" "Library\Bump.obj" "Library\Button.obj" "Library\Clock.obj" "Library\Encoder.obj" "Library\HAL_I2C.obj" "Library\HAL_OPT3001.obj" "Library\Motor.obj" "Library\Reflectance.obj" "ccs\startup_msp432p401r_ccs.obj" 
+	-$(RM) "main.d" "system_msp432p401r.d" "Library\Bump.d" "Library\Button.d" "Library\Clock.d" "Library\Encoder.d" "Library\HAL_I2C.d" "Library\HAL_OPT3001.d" "Library\Motor.d" "Library\Reflectance.d" "ccs\startup_msp432p401r_ccs.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
